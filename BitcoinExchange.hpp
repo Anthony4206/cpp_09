@@ -16,4 +16,6 @@ class BitcoinExchange {
 	public:
 		BitcoinExchange(std::string const &csv_file);
 		~BitcoinExchange();
+
+		std::map<std::string, double> const &getData() const;
 };

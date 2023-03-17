@@ -11,6 +11,9 @@ int	main(int argc, char **argv) {
 
 	BitcoinExchange	exchange("data.csv");
 
+    std::map<std::string, double>::const_iterator it;
+
+    for (it = exchange.getData().begin(); it != exchange.getData().end(); ++it)
 	
 	return (0);
 }

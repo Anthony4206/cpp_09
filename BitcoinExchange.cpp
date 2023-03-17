@@ -22,10 +22,13 @@ BitcoinExchange::BitcoinExchange(std::string const &csv_file) {
 		if (std::getline(iss, data_str, '|') && iss >> value) {
 			_data.insert({data_str, value});
 		}
-
 	}
 }
 
 BitcoinExchange::~BitcoinExchange() {
 	return ;
+}
+
+std::map<std::string, double> const &BitcoinExchange::getData() const {
+	return (_data);
 }
