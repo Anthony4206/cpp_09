@@ -18,7 +18,7 @@ int	main(int argc, char **argv) {
 
 	if (!input_file.is_open()) {
 		try {
-			throw std::runtime_error("error: the file is invalid");
+			throw std::runtime_error("error: the input file is invalid");
 		} catch (std::exception const &e) {
 			std::cout << e.what() << std::endl;
 			return (-1);
@@ -36,6 +36,5 @@ int	main(int argc, char **argv) {
 		}
 		exchange.outputGenerator(date);
 	}
-	
 	return (0);
 }

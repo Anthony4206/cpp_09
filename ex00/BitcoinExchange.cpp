@@ -11,10 +11,10 @@ BitcoinExchange::BitcoinExchange(std::string const &csv_file) {
 
 	if (!data_file.is_open()) {
 		try {
-			throw std::runtime_error("error: the file is invalid");
+			throw std::runtime_error("error: the file csv_file is invalid");
 		} catch (std::exception const &e) {
 			std::cout << e.what() << std::endl;
-			return ;
+			exit(EXIT_FAILURE);
 		}
 	}
 	std::string		line;
@@ -33,7 +33,7 @@ BitcoinExchange::~BitcoinExchange() {
 	return ;
 }
 
-void	BitcoinExchange::errorLine(std::string arg, std::string line) {
+void	BitcoinExchange::errorLine(std::string const &arg, std::string const &line) {
 	try {
 		if (!line.empty())
 			throw std::invalid_argument(arg + line);
@@ -45,7 +45,7 @@ void	BitcoinExchange::errorLine(std::string arg, std::string line) {
 	}
 }
 
-std::string	BitcoinExchange::trim(std::string line) {
+std::string	BitcoinExchange::trim(std::string line) const {
 	size_t	begin = line.find_first_not_of(" ");
 	size_t	end = line.find_last_not_of(" ");
 
@@ -56,7 +56,7 @@ std::string	BitcoinExchange::trim(std::string line) {
 	return (line);
 }
 
-std::string	BitcoinExchange::decrementDate(std::string date) {
+std::string	BitcoinExchange::decrementDate(std::string date) const {
 	int	year = std::stoi(date.substr(0, 4));
 	int	month = std::stoi(date.substr(5, 2));
 	int	day = std::stoi(date.substr(8, 2));
